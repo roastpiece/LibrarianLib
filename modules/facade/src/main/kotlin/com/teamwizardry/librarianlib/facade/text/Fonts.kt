@@ -47,7 +47,7 @@ public object Fonts : SimpleResourceReloadListener<Pair<Bitfont, Bitfont>> {
     private fun load(manager: ResourceManager, fontLocation: Identifier): Bitfont {
         try {
             logger.debug("Loading Bitfont font $fontLocation")
-            val bytes = manager.getResource(fontLocation).inputStream
+            val bytes = manager.getResource(fontLocation).get().inputStream
             val font = Bitfont.unpack(bytes)
             logger.debug("Finished loading font")
             return font

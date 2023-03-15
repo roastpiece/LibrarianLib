@@ -66,7 +66,7 @@ public inline fun <reified T: VertexConsumer> T.vertex2d(matrix: Matrix4d, pos: 
 
 /** Sets the position with Z = 0 */
 public inline fun <reified T: VertexConsumer> T.vertex2d(stack: MatrixStack, x: Number, y: Number): T {
-    val matrix = mixinCast<IMatrix4f>(stack.peek().model)
+    val matrix = mixinCast<IMatrix4f>(stack.peek().positionMatrix)
     this.vertex(
         matrix.transformX(x.toFloat(), y.toFloat(), 0f),
         matrix.transformY(x.toFloat(), y.toFloat(), 0f),
@@ -77,7 +77,7 @@ public inline fun <reified T: VertexConsumer> T.vertex2d(stack: MatrixStack, x: 
 
 /** Sets the position with Z = 0 */
 public inline fun <reified T: VertexConsumer> T.vertex2d(stack: MatrixStack, pos: Vec2d): T {
-    val matrix = mixinCast<IMatrix4f>(stack.peek().model)
+    val matrix = mixinCast<IMatrix4f>(stack.peek().positionMatrix)
     this.vertex(
         matrix.transformX(pos.x.toFloat(), pos.y.toFloat(), 0f),
         matrix.transformY(pos.x.toFloat(), pos.y.toFloat(), 0f),

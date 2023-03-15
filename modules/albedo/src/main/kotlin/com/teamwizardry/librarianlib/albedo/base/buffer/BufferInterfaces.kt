@@ -33,7 +33,7 @@ public interface PositionBuffer<T> {
     }
 
     public fun pos(stack: MatrixStack, x: Float, y: Float, z: Float): T {
-        return this.pos(stack.peek().model, x, y, z)
+        return this.pos(stack.peek().positionMatrix, x, y, z)
     }
 
     public fun pos(pos: Vec3d): T = this.pos(pos.x, pos.y, pos.z)
@@ -88,7 +88,7 @@ public interface NormalBuffer<T> {
     }
 
     public fun normal(stack: MatrixStack, x: Float, y: Float, z: Float): T {
-        return this.normal(stack.peek().normal, x, y, z)
+        return this.normal(stack.peek().normalMatrix, x, y, z)
     }
 
 

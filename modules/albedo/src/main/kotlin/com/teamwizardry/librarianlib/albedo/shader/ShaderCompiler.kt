@@ -46,7 +46,7 @@ public object ShaderCompiler {
     @JvmStatic
     public fun preprocessShader(location: Identifier, defines: List<String>, resourceManager: ResourceManager): PreprocessorResult {
         return preprocessShader(location, defines) {
-            resourceManager.getResource(it).inputStream.bufferedReader().readText()
+            resourceManager.getResource(it).get().reader.readText()
         }
     }
 

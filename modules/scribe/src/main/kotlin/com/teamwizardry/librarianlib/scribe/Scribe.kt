@@ -7,7 +7,7 @@ import net.minecraft.block.Block
 import net.minecraft.enchantment.Enchantment
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.EntityAttribute
-import net.minecraft.entity.decoration.painting.PaintingMotive
+import net.minecraft.entity.decoration.painting.PaintingVariant
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.fluid.Fluid
 import net.minecraft.item.Item
@@ -122,7 +122,7 @@ public object Scribe {
             RegistryEntrySerializer(Registry.POTION, Mirror.reflect<Potion>()),
 //            RegistryEntrySerializer(Registry.PARTICLE_TYPE, Mirror.reflect<ParticleType<?>>()),
 //            RegistryEntrySerializer(Registry.BLOCK_ENTITY_TYPE, Mirror.reflect<BlockEntityType<?>>()),
-            RegistryEntrySerializer(Registry.PAINTING_MOTIVE, Mirror.reflect<PaintingMotive>()),
+            RegistryEntrySerializer(Registry.PAINTING_VARIANT, Mirror.reflect<PaintingVariant>()),
             RegistryEntrySerializer(Registry.CHUNK_STATUS, Mirror.reflect<ChunkStatus>()),
 //            RegistryEntrySerializer(Registry.RULE_TEST, Mirror.reflect<RuleTestType<?>>()),
 //            RegistryEntrySerializer(Registry.POS_RULE_TEST, Mirror.reflect<PosRuleTestType<?>>()),

@@ -9,12 +9,12 @@ import com.teamwizardry.librarianlib.facade.bridge.AbortingBufferBuilder
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.text.LiteralText
 import net.minecraft.text.OrderedText
+import net.minecraft.text.Text
 import java.awt.Color
 import kotlin.math.min
 
-public class SafetyNetErrorScreen(private val message: String, private val e: Exception): Screen(LiteralText("§4§nSafety net caught an exception:")) {
+public class SafetyNetErrorScreen(private val message: String, private val e: Exception): Screen(Text.literal("§4§nSafety net caught an exception:")) {
     private val guiWidth: Int
     private val guiHeight: Int
 
@@ -101,9 +101,9 @@ public class SafetyNetErrorScreen(private val message: String, private val e: Ex
         init {
             val fontRenderer = Client.minecraft.textRenderer
             if (maxWidth == null) {
-                lines = listOf(LiteralText(text).asOrderedText())
+                lines = listOf(Text.literal(text).asOrderedText())
             } else {
-                lines = fontRenderer.wrapLines(LiteralText(text), maxWidth)
+                lines = fontRenderer.wrapLines(Text.literal(text), maxWidth)
             }
             widths = lines.map { fontRenderer.getWidth(it) }
 

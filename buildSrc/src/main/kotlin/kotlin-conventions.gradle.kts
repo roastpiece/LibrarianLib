@@ -15,7 +15,7 @@ tasks.withType<KotlinCompile> {
         languageVersion = "1.5"
         apiVersion = "1.5"
 
-        jvmTarget = "1.8"
+        jvmTarget = "17"
         javaParameters = true
         freeCompilerArgs = freeCompilerArgs + listOf(
             "-Xjvm-default=all",

@@ -9,7 +9,7 @@ import com.teamwizardry.librarianlib.facade.provided.VanillaTooltipRenderer
 import com.teamwizardry.librarianlib.math.Vec2d
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.text.LiteralText
+import net.minecraft.text.LiteralTextContent
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import org.lwjgl.glfw.GLFW
@@ -145,7 +145,7 @@ internal class FacadeDebugOptionsConfigurator(private val options: FacadeDebugOp
         buffer.draw(Primitive.QUADS)
 
         if(hoveredIndex in rows.indices) {
-            val wrapped = Client.textRenderer.wrapLines(LiteralText(rows[hoveredIndex].tooltip), width)
+            val wrapped = Client.textRenderer.wrapLines(Text.literal(rows[hoveredIndex].tooltip), width)
             wrapped.forEachIndexed { i, text ->
                 Client.textRenderer.draw(matrixStack, text, left.toFloat(), bottom + 3 + i * 9f, Color.lightGray.rgb)
             }

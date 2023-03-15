@@ -17,7 +17,6 @@ loom {
     }
 
     log4jConfigs.setFrom(file("log4j.xml"))
-    remapArchives.set(false)
 }
 
 val allModules = commonConfig.modules.map { it.path } + listOf(":testcore")
@@ -25,9 +24,9 @@ val allModules = commonConfig.modules.map { it.path } + listOf(":testcore")
 dependencies {
     allModules.forEach {
         runtimeOnly(project(it, configuration = "devRuntime"))
-        modRuntime(project(it, configuration = "devMod"))
+        modRuntimeOnly(project(it, configuration = "devMod"))
     }
-    modRuntime("com.terraformersmc:modmenu:2.0.5")
+    modRuntimeOnly("com.terraformersmc:modmenu:2.0.5")
 }
 
 val copyMixinAgent = tasks.register<Sync>("copyMixinAgent") {

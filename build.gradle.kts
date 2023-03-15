@@ -16,7 +16,7 @@ buildscript {
     }
     dependencies {
         // update this to match version in buildSrc
-        classpath("net.fabricmc:fabric-loom:0.10.64")
+        classpath("net.fabricmc:fabric-loom:1.1-SNAPSHOT")
     }
 }
 
@@ -41,8 +41,9 @@ allprojects {
         }
         maven("https://repo.spongepowered.org/repository/maven-public/")
 
-        maven("https://storage.googleapis.com/devan-maven/") // for ARRP
+//        maven("https://storage.googleapis.com/devan-maven/") // for ARRP
         maven("https://maven.terraformersmc.com/releases") // for ModMenu
+        maven("https://ueaj.dev/maven")
     }
 }
 

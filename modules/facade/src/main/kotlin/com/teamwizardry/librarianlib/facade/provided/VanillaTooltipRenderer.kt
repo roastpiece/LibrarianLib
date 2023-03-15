@@ -5,7 +5,6 @@ import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.item.ItemStack
-import net.minecraft.text.LiteralText
 import net.minecraft.text.OrderedText
 import net.minecraft.text.StringVisitable
 import net.minecraft.text.Text
@@ -17,7 +16,7 @@ import net.minecraft.util.Language
 public object VanillaTooltipRenderer {
     @JvmStatic
     public fun renderTooltip(matrixStack: MatrixStack, text: String, mouseX: Int, mouseY: Int) {
-        TooltipProvider.renderTooltip(matrixStack, LiteralText(text), mouseX, mouseY)
+        TooltipProvider.renderTooltip(matrixStack, Text.literal(text), mouseX, mouseY)
     }
 
     @JvmStatic
@@ -40,7 +39,7 @@ public object VanillaTooltipRenderer {
         TooltipProvider.renderTooltip(matrixStack, stack, mouseX, mouseY)
     }
 
-    private object TooltipProvider : Screen(LiteralText("")) {
+    private object TooltipProvider : Screen(Text.literal("")) {
         init {
             this.init(Client.minecraft, Client.window.scaledWidth, Client.window.scaledHeight)
         }

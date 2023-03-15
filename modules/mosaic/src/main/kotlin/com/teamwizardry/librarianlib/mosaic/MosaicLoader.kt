@@ -8,6 +8,7 @@ import com.teamwizardry.librarianlib.math.Vec2i
 import com.teamwizardry.librarianlib.math.ceilInt
 import com.teamwizardry.librarianlib.math.floorInt
 import com.teamwizardry.librarianlib.core.util.ivec
+import com.teamwizardry.librarianlib.core.util.kotlin.getOrNull
 import com.teamwizardry.librarianlib.core.util.vec
 import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener
 import net.minecraft.client.resource.metadata.AnimationResourceMetadata
@@ -85,16 +86,16 @@ internal object MosaicLoader : SimpleResourceReloadListener<Map<Identifier, Mosa
 
     private fun load(manager: ResourceManager, location: Identifier): MosaicDefinition? {
         val resource = try {
-             manager.getResource(location)
+             manager.getResource(location).get()
         } catch (exception: IOException) {
             logger.error("Error loading sprite sheet '$location'", exception)
             return null
         }
 
-        val (json, image) = resource.use {
-            val image = ImageIO.read(resource.inputStream)
+        val (json, image) = resource.inputStream.use {
+            val image = ImageIO.read(it)
             return@use Pair(
-                resource.getMetadata(MosaicMetadataReader),
+                resource.metadata.decode(MosaicMetadataReader).getOrNull(),
                 image
             )
         }
@@ -184,7 +185,7 @@ internal object MosaicLoader : SimpleResourceReloadListener<Map<Identifier, Mosa
         val sheet = MosaicDefinition(location)
         sheet.singleSprite = true
 
-        val animation = resource.getMetadata(AnimationResourceMetadata.READER)
+        val animation = resource.metadata.decode(AnimationResourceMetadata.READER).getOrNull()
 
         sheet.uvSize = ivec(image.width, image.height)
         sheet.image = image

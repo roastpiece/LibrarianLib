@@ -247,14 +247,14 @@ public abstract class RenderBuffer(private val vbo: VertexBuffer, vararg support
         byteBuffer.limit(byteBuffer.capacity())
         profiler?.swap("glDraw*")
         glBindVertexArray(vao)
-        val indexBuffer = primitive.indexBuffer(primitive.elementCount(count))
+        val indexBuffer = primitive.indexBuffer()
         if (indexBuffer != null) {
-            if (currentElementBuffer != indexBuffer.id) {
-                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer.id)
-                currentElementBuffer = indexBuffer.id
+            if (currentElementBuffer != indexBuffer.hashCode()) {
+                indexBuffer.bindAndGrow(primitive.elementCount(count))
+                currentElementBuffer = indexBuffer.hashCode()
             }
-            val indexType = indexBuffer.elementFormat.count // this is actually a gl enum. the mappings are bad.
-            glDrawElements(primitive.resultType, primitive.elementCount(count), indexType, 0L)
+            val indexType = indexBuffer.indexType // this is actually a gl enum. the mappings are bad.
+            glDrawElements(primitive.resultType, primitive.elementCount(count), indexType.glType, 0L)
         } else {
             glDrawArrays(primitive.resultType, 0, count)
         }

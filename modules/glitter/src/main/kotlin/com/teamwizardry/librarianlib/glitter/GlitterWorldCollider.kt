@@ -201,7 +201,7 @@ public object GlitterWorldCollider {
         }
 
         val section = chunk.sectionArray[y shr 4]
-        if (ChunkSection.isEmpty(section)) {
+        if (section.isEmpty) {
             // if the section is empty, make note of that for future calls
             airCache.add(sectionPos.asLong())
             return emptyList()

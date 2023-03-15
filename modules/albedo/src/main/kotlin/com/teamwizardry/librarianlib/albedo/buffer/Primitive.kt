@@ -21,9 +21,9 @@ public enum class Primitive(
     TRIANGLES_ADJACENCY(GL_TRIANGLES_ADJACENCY),
     ;
 
-    public fun indexBuffer(vertexCount: Int): RenderSystem.IndexBuffer? {
+    public fun indexBuffer(): RenderSystem.IndexBuffer? {
         return when(this) {
-            QUADS -> RenderSystem.getSequentialBuffer(VertexFormat.DrawMode.QUADS, vertexCount)
+            QUADS -> RenderSystem.getSequentialBuffer(VertexFormat.DrawMode.QUADS)
             else -> null
         }
     }
