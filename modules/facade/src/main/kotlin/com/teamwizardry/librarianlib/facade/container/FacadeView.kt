@@ -226,10 +226,11 @@ public abstract class FacadeView<T: ScreenHandler>(
         Client.minecraft.keyboard.setRepeatEvents(false)
     }
 
-    override fun onClose() {
-        super.onClose()
+    override fun close() {
+        super.close()
         facade.onClose()
     }
+
 
     public companion object {
         private val depthClobberRenderState = RenderState.normal

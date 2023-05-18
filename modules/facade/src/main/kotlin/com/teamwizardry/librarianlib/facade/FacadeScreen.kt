@@ -92,8 +92,7 @@ public open class FacadeScreen(title: Text): Screen(title) {
         return true
     }
 
-    override fun onClose() {
-        super.onClose()
+    override fun close() {
         facade.onClose()
     }
 }

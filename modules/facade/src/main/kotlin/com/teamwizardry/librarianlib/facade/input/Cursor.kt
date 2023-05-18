@@ -55,9 +55,9 @@ public class Cursor @JvmOverloads constructor(
             if (glfwCursor != 0L)
                 return
         }
-        val stream = Client.resourceManager.getResource(texture).inputStream
         var bytebuffer: ByteBuffer? = null
         try {
+            val stream = Client.resourceManager.getResource(texture).get().inputStream
             bytebuffer = TextureUtil.readResource(stream)
             bytebuffer!!.rewind()
 

@@ -99,8 +99,8 @@ public class SpriteRenderModule private constructor(
         val viewPos = Client.minecraft.gameRenderer.camera.pos
         stack.translate(-viewPos.x, -viewPos.y, -viewPos.z)
 
-        val modelViewMatrix = stack.peek().model
-        val normalMatrix = context.matrixStack().peek().normal
+        val modelViewMatrix = stack.peek().positionMatrix
+        val normalMatrix = context.matrixStack().peek().normalMatrix
 
         val camera = Client.minecraft.gameRenderer.camera
 
@@ -126,7 +126,7 @@ public class SpriteRenderModule private constructor(
 
         val spriteSize = 1f / spriteSheetSize
         val spriteIndexMask = spriteSheetSize - 1
-        val spriteSheetBits = MathHelper.log2(spriteSheetSize)
+        val spriteSheetBits = MathHelper.floorLog2(spriteSheetSize)
 
         val widthSizeIndex: Int = if (this.size.contents.size == 2) 1 else 0
 

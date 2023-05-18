@@ -4,9 +4,9 @@ plugins {
     id("fabric-loom")
 }
 
-configure<LoomGradleExtensionAPI> {
-    shareCaches()
-}
+//configure<LoomGradleExtensionAPI> {
+//    shareCaches()
+//}
 
 dependencies {
     val minecraft_version: String by project
